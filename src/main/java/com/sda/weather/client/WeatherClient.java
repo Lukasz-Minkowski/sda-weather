@@ -41,7 +41,16 @@ public class WeatherClient {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj nazwę lokalizacji: ");
         String locationName = scanner.nextLine();
-        System.out.println("Podaj szerokość geograficzną: ");
+        System.out.print("Podaj długość geograficzną: ");
+        String longitude = scanner.nextLine();
+        System.out.print("Podaj szerokość geograficzną: ");
+        String latitude = scanner.nextLine();
+        System.out.print("Podaj region: ");
+        String region = scanner.nextLine();
+        System.out.print("Podaj kraj: ");
+        String countryName = scanner.nextLine();
+        String response = entryController.addNewEntry(locationName,longitude, latitude, region, countryName);
+        System.out.println("Nowy wpis został dodany: " + response + "\n");
 
 
     }
