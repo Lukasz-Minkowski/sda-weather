@@ -2,11 +2,11 @@ package com.sda.weather.application;
 
 import java.util.List;
 
-public class EntryService {
+public class LocationService {
 
-    private final EntryRepository entryRepository = new EntryRepository();
+    private final LocationRepository locationRepository = new LocationRepository();
 
-    public Entry addNewEntry(String locationName, String longitude, String latitude, String region, String countryName) {
+    public Location addNewLocation(String locationName, String longitude, String latitude, String region, String countryName) {
         if (locationName == null || locationName.isEmpty()) {
             throw new RuntimeException("Lokalizacja nie może być pusta!");
         }
@@ -20,13 +20,13 @@ public class EntryService {
             throw new RuntimeException("Nazwa kraju nie może być pusta");
         }
 
-        Entry entry = new Entry(locationName, longitude, latitude, region, countryName);
-        Entry savedEntry = entryRepository.saveNewEntry(entry);
+        Location location = new Location(locationName, longitude, latitude, region, countryName);
+        Location savedLocation = locationRepository.saveNewEntry(location);
 
-        return savedEntry;
+        return savedLocation;
     }
 
-    public List<Entry> readAllEntries() {
-        return entryRepository.readAllEntries();
+    public List<Location> readAllEntries() {
+        return locationRepository.readAllEntries();
     }
 }

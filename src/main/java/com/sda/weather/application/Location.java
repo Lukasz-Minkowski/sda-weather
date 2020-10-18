@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 @Data
 @NoArgsConstructor
-public class Entry {
+public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +22,11 @@ public class Entry {
     String region;
     String countryName;
 
-    public Entry(String locationName, String longitude, String latitude, String region, String countryName) {
+    public Location(String locationName, String longitude, String latitude, String region, String countryName) {
         this.locationName = locationName;
         this.longitude = longitude;
         this.latitude = latitude;
         this.region = region;
         this.countryName = countryName;
     }
-
 }

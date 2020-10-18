@@ -9,10 +9,10 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.List;
 
-public class EntryRepository {
+public class LocationRepository {
     private final SessionFactory sessionFactory;
 
-    public EntryRepository() {
+    public LocationRepository() {
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
                 .configure().build();
 
@@ -21,23 +21,23 @@ public class EntryRepository {
                 .buildSessionFactory();
     }
 
-    public Entry saveNewEntry(Entry entry) {
+    public Location saveNewEntry(Location location) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        session.persist(entry);
+        session.persist(location);
 
         transaction.commit();
         session.close();
 
-        return entry;
+        return location;
     }
 
-    public List<Entry> readAllEntries() {
+    public List<Location> readAllEntries() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        List<Entry> result = session.createQuery("FROM Entry").getResultList();
+        List<Location> result = session.createQuery("FROM Location").getResultList();
 
         transaction.commit();
         session.close();

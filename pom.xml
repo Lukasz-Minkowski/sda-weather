@@ -21,6 +21,14 @@
                 </configuration>
             </plugin>
             <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.2</version>
+            </plugin>
+            <plugin>
                 <groupId>org.hibernate.orm.tooling</groupId>
                 <artifactId>hibernate-enhance-maven-plugin</artifactId>
                 <version>5.4.22.Final</version>
@@ -76,9 +84,6 @@
             <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
-
-
-
     </dependencies>
 
 
