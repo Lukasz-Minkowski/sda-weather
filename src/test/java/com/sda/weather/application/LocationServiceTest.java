@@ -17,4 +17,30 @@ class LocationServiceTest {
     void addNewLocation_whenLongitudeIsAbove180_shouldThrowException() {
         assertThrows(Exception.class, () -> locationService.addNewLocation("London", "181", "50", "region", "country"));
     }
+
+    @Test
+    void addNewLocation_whenLongitudeIsEmpty_shouldThrowException() {
+        assertThrows(Exception.class, () -> locationService.addNewLocation("London", "", "50", "region", "country"));
+    }
+
+    @Test
+    void addNewLocation_whenLatitudeIsAbove90_shouldThrowException(){
+        assertThrows(Exception.class, () -> locationService.addNewLocation("Berlin", "150", "95", "region", "country"));
+    }
+
+    @Test
+    void addNewLocation_whenLatitudeIsEmpty_shouldThrowException(){
+        assertThrows(Exception.class, () -> locationService.addNewLocation("Berlin", "150", "", "region", "country"));
+    }
+
+    @Test
+    void addNewLocation_whenRegionNameInEmpty_shouldThrowException() {
+        assertThrows(Exception.class, () -> locationService.addNewLocation("Berlin", "40", "50", "", ""));
+    }
+
+    @Test
+    void addNewLocation_whenCountryNameInEmpty_shouldThrowException() {
+        assertThrows(Exception.class, () -> locationService.addNewLocation("Berlin", "40", "50", "region", ""));
+    }
+
 }

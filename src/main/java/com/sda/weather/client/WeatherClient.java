@@ -31,10 +31,9 @@ public class WeatherClient {
                 case 3:
                     getWeatherValues();
                     break;
-                case 0:
+                case 4:
                     System.out.println("Twoja aplikacja jest zamykana");
                     return;
-
             }
         }
     }
@@ -43,9 +42,9 @@ public class WeatherClient {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Podaj nazwę lokalizacji: ");
         String locationName = scanner.nextLine();
-        System.out.print("Podaj długość geograficzną: ");
+        System.out.print("Podaj długość geograficzną (liczba całk. z zakresu: -180(W) do 180(E): ");
         String longitude = scanner.nextLine();
-        System.out.print("Podaj szerokość geograficzną: ");
+        System.out.print("Podaj szerokość geograficzną (liczba. całk. z zakresu: -90(S) do 90(N): ");
         String latitude = scanner.nextLine();
         System.out.print("Podaj region: ");
         String region = scanner.nextLine();
@@ -57,7 +56,7 @@ public class WeatherClient {
     }
 
     private void readAllEntries() {
-        String response = locationController.readAllEntries();
+        String response = locationController.readAllLocations();
         System.out.println("Twoje wpisy: " + response);
     }
 

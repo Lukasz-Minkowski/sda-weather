@@ -21,7 +21,7 @@ public class LocationRepository {
                 .buildSessionFactory();
     }
 
-    public Location saveNewEntry(Location location) {
+    public Location saveNewLocation(Location location) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
@@ -33,7 +33,7 @@ public class LocationRepository {
         return location;
     }
 
-    public List<Location> readAllEntries() {
+    public List<Location> readAllLocations() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
