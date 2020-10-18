@@ -1,5 +1,7 @@
 package com.sda.weather.client;
 
+import com.sda.weather.application.EntryController;
+
 import java.util.Scanner;
 
 public class WeatherClient {
@@ -49,14 +51,14 @@ public class WeatherClient {
         String region = scanner.nextLine();
         System.out.print("Podaj kraj: ");
         String countryName = scanner.nextLine();
-        String response = entryController.addNewEntry(locationName,longitude, latitude, region, countryName);
+        String response = entryController.addNewEntry(locationName, longitude, latitude, region, countryName);
         System.out.println("Nowy wpis został dodany: " + response + "\n");
-
 
     }
 
     private void readAllEntries() {
-
+        String response = entryController.readAllEntries();
+        System.out.println("Twoje wpisy: " + response);
     }
 
     private void getWeatherValues() {
