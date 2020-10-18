@@ -8,7 +8,7 @@ public class LocationService {
 
     public Location addNewLocation(String locationName, String longitude, String latitude, String region, String countryName) {
         if (locationName == null || locationName.isEmpty()) {
-            throw new RuntimeException("Lokalizacja nie może być pusta!");
+            throw new RuntimeException("Lokalizacja nie może być pusta!");  // todo: BadRequestException
         }
         if (longitude == null || longitude.isEmpty()) {
             throw new RuntimeException("Długość geograficzna nie może być pusta!");

@@ -24,15 +24,11 @@ public class LocationController {
 
     public String readAllLocations() throws InternalServerException {
         List<Location> locations = locationService.readAllLocations();
-        List<String> mappedLocations = new ArrayList<>();
         try {
-            for (Location location : locations) {
-                mappedLocations.add(objectMapper.writeValueAsString(location));
-            }
+            return objectMapper.writeValueAsString(locations);
         } catch (JsonProcessingException e) {
             throw new InternalServerException("HTTP 500 internal server error");
         }
-        return mappedLocations.toString();
     }
 
     public String getWeatherValues() {

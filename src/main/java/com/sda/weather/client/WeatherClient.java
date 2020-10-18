@@ -52,7 +52,6 @@ public class WeatherClient {
         String countryName = scanner.nextLine();
         String response = locationController.addNewLocation(locationName, longitude, latitude, region, countryName);
         System.out.println("Nowy wpis został dodany: " + response + "\n");
-
     }
 
     private void readAllEntries() {

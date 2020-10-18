@@ -10,6 +10,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import java.util.List;
 
 public class LocationRepository {
+
     private final SessionFactory sessionFactory;
 
     public LocationRepository() {
