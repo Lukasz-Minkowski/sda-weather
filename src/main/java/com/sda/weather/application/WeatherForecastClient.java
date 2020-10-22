@@ -22,10 +22,9 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
                                                                                                 //to wtedy poleciałby exceptios, a ten zapis, powoduje,
                                                                                                 //że exception nie poleci
         objectMapper.findAndRegisterModules();
-
     }
 
-    public String getWeather(String cityName) {
+    public WeatherResponse.ListItem getWeather(String cityName) {
         String uri = String.format("http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s", cityName, API_KEY);
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
@@ -36,11 +35,12 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
             String responseBody = httpResponse.body();
 
             WeatherResponse weatherResponse = objectMapper.readValue(responseBody, WeatherResponse.class);
-            List<WeatherResponse.ListItem>list = weatherResponse.getList();
+            List<WeatherResponse.ListItem> list = weatherResponse.getList();
 
-            //todo: map to WeatherResponse -> użyć objectMapper.readValue()
-
-            return responseBody;
+            // todo: get the appropriate forecast for a given day from the list -> use streams, filters
+            return list.stream()
+                    .findFirst()
+                    .orElseThrow(() -> new RuntimeException("...")); // example
         } catch (Exception e) {
             System.out.println("Nieudana próba połączenia z serwisem: " + e.getMessage());
             throw new BadGatawayException("Nieudana próba połączenia z serwisem, 502");

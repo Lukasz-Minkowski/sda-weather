@@ -31,13 +31,18 @@ public class WeatherClient {
                     readAllEntries();
                     break;
                 case 3:
-                    weatherController.getWeatherValues();
+                    getWeather();
                     break;
                 case 4:
                     System.out.println("Twoja aplikacja jest zamykana");
                     return;
             }
         }
+    }
+
+    private void getWeather() {
+        // todo develop a client interface to get data about a city
+        weatherController.getWeatherValues("London");
     }
 
     private void addNewEntry() {

@@ -10,11 +10,8 @@ public class WeatherResponse {
 
     List<ListItem> list = new ArrayList<>();
 
+    @Data
     public static class ListItem{
         String dt_txt;
     }
-
-
-
-
 }

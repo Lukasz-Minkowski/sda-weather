@@ -2,21 +2,19 @@ package com.sda.weather.application;
 
 import lombok.Data;
 
-import java.util.Scanner;
-
 @Data
 public class WeatherController {
 
-    WeatherForecastClient weatherForecastClient = new WeatherForecastClient();
+    WeatherService weatherController = new WeatherService();
 
-    public void getWeatherValues() {
+    public void getWeatherValues(String cityName) {
+        // todo move to the Client class
+//        String cityName = "";
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.println("Dla jakiego miasta, chcesz wyświetlić prognozę pogody: ");
+//        cityName = scanner.nextLine();
 
-        String cityName = "";
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Dla jakiego miasta, chcesz wyświetlić prognozę pogody: ");
-        cityName = scanner.nextLine();
-        weatherForecastClient.getWeather(cityName);
+        // todo use WeatherService to get information about a weather
 
     }
-
 }
