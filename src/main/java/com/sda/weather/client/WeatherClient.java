@@ -1,12 +1,14 @@
 package com.sda.weather.client;
 
 import com.sda.weather.application.LocationController;
+import com.sda.weather.application.WeatherController;
 
 import java.util.Scanner;
 
 public class WeatherClient {
 
     private final LocationController locationController = new LocationController();
+    private final WeatherController weatherController = new WeatherController();
 
     public void runClientInterface() {
         Scanner scanner = new Scanner(System.in);
@@ -29,7 +31,7 @@ public class WeatherClient {
                     readAllEntries();
                     break;
                 case 3:
-                    getWeatherValues();
+                    weatherController.getWeatherValues();
                     break;
                 case 4:
                     System.out.println("Twoja aplikacja jest zamykana");
@@ -56,11 +58,12 @@ public class WeatherClient {
 
     private void readAllEntries() {
         String response = locationController.readAllLocations();
+        response = response.replaceAll("\\[]", "\n")
+                .replaceAll("\\{", "\n")
+                .replaceAll("\\}", "")
+                .replaceAll("\\]", "");
+
         System.out.println("Twoje wpisy: " + response);
-    }
-
-    private void getWeatherValues() {
-
     }
 
 }

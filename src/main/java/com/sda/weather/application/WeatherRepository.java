@@ -6,31 +6,32 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class LocationRepository { //warstwa danych
+public class WeatherRepository { //warstwa danych
 
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
-    public Location saveNewLocation(Location location) {
+    public Weather saveNewWeatherForecast(Weather weather) {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        session.persist(location);
+        session.persist(weather);
 
         transaction.commit();
         session.close();
 
-        return location;
+        return weather;
     }
 
-    public List<Location> readAllLocations() {
+    public List<Weather> readAllWeatherForecasts() {
         Session session = sessionFactory.openSession();
         Transaction transaction = session.beginTransaction();
 
-        List<Location> result = session.createQuery("FROM Location").getResultList();
+        List<Weather> result = session.createQuery("FROM Weather").getResultList();
 
         transaction.commit();
         session.close();
 
         return result;
     }
+
 }

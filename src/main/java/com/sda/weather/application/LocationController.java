@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.weather.exceptions.InternalServerException;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class LocationController {
@@ -29,10 +28,5 @@ public class LocationController {
         } catch (JsonProcessingException e) {
             throw new InternalServerException("HTTP 500 internal server error");
         }
-    }
-
-    public String getWeatherValues() {
-        // todo: move to WeatherController.java
-        return null;
     }
 }
