@@ -38,8 +38,6 @@ class LocationServiceTest {
     @Test
     void addNewLocation_whenCityIsEmpty_shouldThrowException() {
         assertThrows(Exception.class, () -> locationService.addNewLocation(" ", "40", "50", "region", "country"));
-
-        // todo: isEmpty vs isBlank
     }
 
     @Test

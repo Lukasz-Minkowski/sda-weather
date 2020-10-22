@@ -8,5 +8,4 @@ public class WeatherApplication {
         WeatherClient weatherClient = new WeatherClient();
         weatherClient.runClientInterface();
     }
-
 }

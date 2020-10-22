@@ -7,7 +7,7 @@ public class WeatherController {
 
     WeatherService weatherController = new WeatherService();
 
-    public void getWeatherValues(String cityName) {
+    public String getWeatherValues(String cityName) {
         // todo move to the Client class
 //        String cityName = "";
 //        Scanner scanner = new Scanner(System.in);
@@ -15,6 +15,7 @@ public class WeatherController {
 //        cityName = scanner.nextLine();
 
         // todo use WeatherService to get information about a weather
-
+        // todo use ObjectMapper to map a Weather to String
+        return "";
     }
 }
