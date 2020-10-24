@@ -8,6 +8,7 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.LocalDate;
 import java.util.List;
 
 public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych z serwisu pogodowego
@@ -18,9 +19,9 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
 
     public WeatherForecastClient() {
         objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false); //jeśli w czasie deserializacji danych pobranych z serwisu
-                                                                                                //okaże się, że nie są pobrane wszystkie, czyli 1 do 1,
-                                                                                                //to wtedy poleciałby exceptios, a ten zapis, powoduje,
-                                                                                                //że exception nie poleci
+        //okaże się, że nie są pobrane wszystkie, czyli 1 do 1,
+        //to wtedy poleciałby exceptios, a ten zapis, powoduje,
+        //że exception nie poleci
         objectMapper.findAndRegisterModules();
     }
 
@@ -39,6 +40,7 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
 
             // todo: get the appropriate forecast for a given day from the list -> use streams, filters
             return list.stream()
+                    .filter(dt -> dt.getDt_txt().equals(LocalDate.now().plusDays(1) + "  12:00:00"))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("...")); // example
         } catch (Exception e) {

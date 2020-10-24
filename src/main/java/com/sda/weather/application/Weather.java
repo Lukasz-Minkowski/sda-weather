@@ -17,13 +17,13 @@ public class Weather {
     @Id
     @GeneratedValue
     Long id;
-    Integer temperature;  //temperatura C
-    Integer pressure;     //ciśnienie
-    Integer humidity;     //wilgotność
+    Float temperature;  //temperatura C
+    Float pressure;     //ciśnienie
+    Float humidity;     //wilgotność
     String windDirection; //kierunek wiatru
-    Integer windSpeed;    //prędkość wiatru
+    Float windSpeed;    //prędkość wiatru
 
-    public Weather(Integer temperature, Integer pressure, Integer humidity, String windDirection, Integer windSpeed) {
+    public Weather(Float temperature, Float pressure, Float humidity, String windDirection, Float windSpeed) {
         this.temperature = temperature;
         this.pressure = pressure;
         this.humidity = humidity;
