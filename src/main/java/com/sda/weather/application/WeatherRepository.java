@@ -6,7 +6,7 @@ import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class WeatherRepository { //warstwa danych
+public class WeatherRepository { // warstwa danych
 
     SessionFactory sessionFactory = HibernateUtils.getSessionFactory();
 
@@ -33,5 +33,4 @@ public class WeatherRepository { //warstwa danych
 
         return result;
     }
-
 }

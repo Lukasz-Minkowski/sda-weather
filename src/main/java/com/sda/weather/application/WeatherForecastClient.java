@@ -26,6 +26,7 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
     }
 
     public WeatherResponse.ListItem getWeather(String cityName) {
+        // todo K -> C
         String uri = String.format("http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s", cityName, API_KEY);
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
@@ -38,11 +39,10 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
             WeatherResponse weatherResponse = objectMapper.readValue(responseBody, WeatherResponse.class);
             List<WeatherResponse.ListItem> list = weatherResponse.getList();
 
-            // todo: get the appropriate forecast for a given day from the list -> use streams, filters
             return list.stream()
-                    .filter(dt -> dt.getDt_txt().equals(LocalDate.now().plusDays(1) + " 12:00:00"))
+                    .filter(dt -> dt.getDt_txt().equals(LocalDate.now().plusDays(1) + " 12:00:00")) // todo parametrize days CTRL + ALT + P
                     .findFirst()
-                    .orElseThrow(() -> new RuntimeException("...")); // example
+                    .orElseThrow(() -> new RuntimeException("...")); // todo create your own exception
         } catch (Exception e) {
             System.out.println("Nieudana próba połączenia z serwisem: " + e.getMessage());
             throw new BadGatawayException("Nieudana próba połączenia z serwisem, 502");

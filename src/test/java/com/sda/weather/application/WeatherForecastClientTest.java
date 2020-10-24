@@ -8,7 +8,10 @@ public class WeatherForecastClientTest {
 
     @Test
     void test() {       // todo name me, develop me
+        // when
         WeatherResponse.ListItem listItem = weatherForecastClient.getWeather("London");
+
+        // then
         System.out.println(listItem);
     }
 }

@@ -46,8 +46,9 @@ public class WeatherClient {
         System.out.println("Podaj nazwę lokalizacji: ");
         String cityName = scanner.nextLine();
 
-        // todo develop a client interface to get data about a city
-        weatherController.getWeatherValues(cityName);
+        // todo develop a client interface to get data about a forecast date (days 1 - 5)
+        String response = weatherController.getWeatherValues(cityName);
+        System.out.println("Twoja prognoza: " + response);
     }
 
     private void addNewEntry() {
