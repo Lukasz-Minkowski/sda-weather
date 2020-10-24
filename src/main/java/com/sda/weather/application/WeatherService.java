@@ -8,9 +8,13 @@ public class WeatherService {
 
     Weather getWeather(String cityName) {
         WeatherResponse.ListItem weatherList = weatherForecastClient.getWeather(cityName);
-        Weather savedWeather = weatherRepository.saveNewWeatherForecast();
-        return weatherResponseMapper.mapToWeather(weatherList);
-
+        Weather weather = weatherResponseMapper.mapToWeather(weatherList);
+        return weather;
         // todo use WeatherForecastClient and WeatherResponseMapper
     }
+
+    public void saveWeather(Weather weather){
+        weatherRepository.saveNewWeatherForecast(weather);
+    }
+
 }
