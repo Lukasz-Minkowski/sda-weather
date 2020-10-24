@@ -12,6 +12,14 @@ public class WeatherResponse {
 
     @Data
     public static class ListItem{
+
+        Main main;
         String dt_txt;
+
+        @Data
+        public static class Main{
+
+            Float temp;
+        }
     }
 }
