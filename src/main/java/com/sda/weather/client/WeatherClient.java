@@ -3,6 +3,7 @@ package com.sda.weather.client;
 import com.sda.weather.application.LocationController;
 import com.sda.weather.application.WeatherController;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class WeatherClient {
@@ -41,8 +42,12 @@ public class WeatherClient {
     }
 
     private void getWeather() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Podaj nazwę lokalizacji: ");
+        String cityName = scanner.nextLine();
+
         // todo develop a client interface to get data about a city
-        weatherController.getWeatherValues("London");
+        weatherController.getWeatherValues(cityName);
     }
 
     private void addNewEntry() {
