@@ -29,6 +29,5 @@ public class WeatherResponse {
             Float speed;
             Float deg;
         }
-
     }
 }

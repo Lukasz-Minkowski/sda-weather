@@ -12,7 +12,6 @@ public class WeatherController {
     private final ObjectMapper objectMapper = new ObjectMapper();
 
     public String getWeatherValues(String cityName) {
-
         Weather weather = weatherService.getWeather(cityName);
         try {
             return objectMapper.writeValueAsString(weather);
@@ -20,8 +19,4 @@ public class WeatherController {
             throw new InternalServerException("HTTP 500 internal server error");
         }
     }
-
-    // todo use WeatherService to get information about a weather   // TO CHECK IF OK
-    // todo use ObjectMapper to map a Weather to String             // TO CHECK IF OK
-
 }
