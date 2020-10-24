@@ -40,7 +40,7 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
 
             // todo: get the appropriate forecast for a given day from the list -> use streams, filters
             return list.stream()
-                    .filter(dt -> dt.getDt_txt().equals(LocalDate.now().plusDays(1) + "  12:00:00"))
+                    .filter(dt -> dt.getDt_txt().equals(LocalDate.now().plusDays(1) + " 12:00:00"))
                     .findFirst()
                     .orElseThrow(() -> new RuntimeException("...")); // example
         } catch (Exception e) {
