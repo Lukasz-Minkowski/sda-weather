@@ -20,8 +20,6 @@ public class WeatherResponseMapper {
 
         float windSpeed = listItem.wind.getSpeed();
 
-
-        // todo create a Weather based on a data from WeatherResponse.ListItem
         return new Weather(temperature, pressure, humidity, windDirection, windSpeed);
     }
 }

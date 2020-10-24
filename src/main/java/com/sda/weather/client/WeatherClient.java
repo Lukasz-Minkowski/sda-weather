@@ -45,9 +45,10 @@ public class WeatherClient {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Podaj nazwę lokalizacji: ");
         String cityName = scanner.nextLine();
+        System.out.println("Podaj na ile dni do przodu chciałbyś ściągnąć prognozę: (1-5)");
+        Integer daysToAdd = scanner.nextInt();
 
-        // todo develop a client interface to get data about a forecast date (days 1 - 5)
-        String response = weatherController.getWeatherValues(cityName);
+        String response = weatherController.getWeatherValues(cityName, daysToAdd);
         System.out.println("Twoja prognoza: " + response);
     }
 

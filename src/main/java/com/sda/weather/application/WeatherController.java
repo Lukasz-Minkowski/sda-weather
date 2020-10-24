@@ -11,8 +11,8 @@ public class WeatherController {
     private final WeatherService weatherService = new WeatherService();
     private final ObjectMapper objectMapper = new ObjectMapper();
 
-    public String getWeatherValues(String cityName) {
-        Weather weather = weatherService.getWeather(cityName);
+    public String getWeatherValues(String cityName, Integer daysToAdd) {
+        Weather weather = weatherService.getWeather(cityName, daysToAdd);
         try {
             return objectMapper.writeValueAsString(weather);
         } catch (JsonProcessingException e) {

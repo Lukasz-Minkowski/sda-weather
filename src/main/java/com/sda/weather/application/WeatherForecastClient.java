@@ -3,6 +3,7 @@ package com.sda.weather.application;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sda.weather.exceptions.BadGatawayException;
+import com.sda.weather.exceptions.BadParametersGainFromUserException;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -25,9 +26,9 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
         objectMapper.findAndRegisterModules();
     }
 
-    public WeatherResponse.ListItem getWeather(String cityName) {
+    public WeatherResponse.ListItem getWeather(String cityName, int daysToAdd) {
         // todo K -> C
-        String uri = String.format("http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s", cityName, API_KEY);
+        String uri = String.format("http://api.openweathermap.org/data/2.5/forecast?q=%s&appid=%s&units=metric", cityName, API_KEY);
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .GET()
                 .uri(URI.create(uri))
@@ -40,9 +41,9 @@ public class WeatherForecastClient { //klasa odpowiedzialna za pobieranie danych
             List<WeatherResponse.ListItem> list = weatherResponse.getList();
 
             return list.stream()
-                    .filter(dt -> dt.getDt_txt().equals(LocalDate.now().plusDays(1) + " 12:00:00")) // todo parametrize days CTRL + ALT + P
+                    .filter(dt -> dt.getDt_txt().equals(LocalDate.now().plusDays(daysToAdd) + " 12:00:00"))
                     .findFirst()
-                    .orElseThrow(() -> new RuntimeException("...")); // todo create your own exception
+                    .orElseThrow(() -> new BadParametersGainFromUserException("Błędne parametry podane przez użytkownika"));
         } catch (Exception e) {
             System.out.println("Nieudana próba połączenia z serwisem: " + e.getMessage());
             throw new BadGatawayException("Nieudana próba połączenia z serwisem, 502");
